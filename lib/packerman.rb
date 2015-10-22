@@ -12,6 +12,7 @@ require 'packerman/dsl/node'
 require 'packerman/dsl/hash_object'
 require 'packerman/dsl/builders'
 require 'packerman/dsl/builders/amazon_ebs'
+require 'packerman/dsl/builders/amazon_instance'
 
 module Packerman
 end

@@ -115,6 +115,84 @@ describe Packerman::Evaluator do
         it_behaves_like :evaluated
       end
 
+      context "amazon-instance" do
+        let(:template) do
+          <<-EOS.undent
+          Builders type: :"amazon-instance" do
+            access_key     "access_key"
+            account_id     "account_id"
+            ami_name       "whoami"
+            instance_type  "t2.small"
+            region         "ap-northeast-1"
+            s3_bucket      "mybucket"
+            secret_key     "itssecret"
+            source_ami     "centos"
+            ssh_username   "root"
+            x509_cert_path "/path/to/cert"
+            x509_key_path  "/path/to/key"
+            ami_block_device_mappings [
+              AmiBlockDeviceMapping.register {
+                delete_on_termination true
+                device_name "devise"
+                encrypted false
+                iops 200_000
+                no_device true
+                snapshot_id "omg"
+                virtual_name "virrrtual"
+                volume_type "type"
+                volume_size 20
+              }
+            ]
+            ami_description   "this is yours"
+            ami_groups        ["group1", "group2"]
+            ami_product_codes ["code1", "code2"]
+            ami_regions       ["region1", "region2"]
+            ami_users         ["user1", "user2"]
+          end
+          EOS
+        end
+
+        let(:hash) do
+          {
+            builders: [
+              {
+                type: "amazon-instance",
+                access_key:     "access_key",
+                account_id:     "account_id",
+                ami_name:       "whoami",
+                instance_type:  "t2.small",
+                region:         "ap-northeast-1",
+                s3_bucket:      "mybucket",
+                secret_key:     "itssecret",
+                source_ami:     "centos",
+                ssh_username:   "root",
+                x509_cert_path: "/path/to/cert",
+                x509_key_path:  "/path/to/key",
+                ami_block_device_mappings: [
+                  {
+                    delete_on_termination: true,
+                    device_name: "devise",
+                    encrypted: false,
+                    iops: 200_000,
+                    no_device: true,
+                    snapshot_id: "omg",
+                    virtual_name: "virrrtual",
+                    volume_type: "type",
+                    volume_size: 20
+                  }
+                ],
+                ami_description:   "this is yours",
+                ami_groups:        ["group1", "group2"],
+                ami_product_codes: ["code1", "code2"],
+                ami_regions:       ["region1", "region2"],
+                ami_users:         ["user1", "user2"]
+              }
+            ]
+          }
+        end
+
+        it_behaves_like :evaluated
+      end
     end
   end
 end
