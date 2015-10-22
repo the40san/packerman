@@ -16,6 +16,9 @@ class Packerman::Evaluator
   end
 
   def parse(template)
-    template.gsub("Builders", "Builders.register")
+    parts = %w(Builders Provisioners)
+    parts.inject(template) do |memo, part|
+      memo.gsub(part, "#{part}.register")
+    end
   end
 end

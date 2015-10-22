@@ -1,5 +1,5 @@
 class Packerman::Repository
-  TEMPLATE_ATTRIBUTES = [:builders]
+  TEMPLATE_ATTRIBUTES = [:builders, :provisioners]
 
   def initialize
     @_repo = {}
