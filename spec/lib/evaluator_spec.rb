@@ -251,7 +251,7 @@ describe Packerman::Evaluator do
       end
     end
 
-    describe "Builder" do
+    describe "Provisioners" do
       context "shell" do
         let(:template) do
           <<-EOS.undent
@@ -281,6 +281,38 @@ describe Packerman::Evaluator do
                 type: "shell",
                 script: "echo $SHELL",
                 binary: true
+              }
+            ]
+          }
+        end
+
+        it_behaves_like :evaluated
+      end
+
+      context "chef-solo" do
+        let(:template) do
+          <<-EOS.undent
+          Provisioners type: "chef-solo" do
+            chef_attributes = { mysql: { version: "5.7", root_password: "plaintext" } }
+
+            cookbook_paths ["cookbooks", "vendor"]
+            json chef_attributes
+            run_list [
+              "role[web]",
+              "recipe[mysql]"
+            ]
+          end
+          EOS
+        end
+
+        let(:hash) do
+          {
+            provisioners: [
+              {
+                type: "chef-solo",
+                cookbook_paths: ["cookbooks", "vendor"],
+                json: { mysql: { version: "5.7", root_password: "plaintext" } },
+                run_list: ["role[web]", "recipe[mysql]"]
               }
             ]
           }
