@@ -9,6 +9,7 @@ class Packerman::Repository
     define_method "add_#{attr}" do |hash|
       @_repo[attr] ||= []
       @_repo[attr] << hash
+      hash
     end
   end
 
