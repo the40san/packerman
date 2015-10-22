@@ -224,6 +224,31 @@ describe Packerman::Evaluator do
 
         it_behaves_like :evaluated
       end
+
+      context "docker" do
+        let(:template) do
+          <<-EOS.undent
+          Builders type: :"docker" do
+            image "ubuntu"
+            export_path "image.tar"
+          end
+          EOS
+        end
+
+        let(:hash) do
+          {
+            builders: [
+              {
+                type: "docker",
+                image: "ubuntu",
+                export_path: "image.tar"
+              }
+            ]
+          }
+        end
+
+        it_behaves_like :evaluated
+      end
     end
   end
 end
