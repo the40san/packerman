@@ -15,6 +15,8 @@ require 'packerman/dsl/builders/amazon_ebs'
 require 'packerman/dsl/builders/amazon_instance'
 require 'packerman/dsl/builders/amazon_chroot'
 require 'packerman/dsl/builders/docker'
+require 'packerman/dsl/provisioners'
+require 'packerman/dsl/provisioners/shell'
 
 module Packerman
 end
