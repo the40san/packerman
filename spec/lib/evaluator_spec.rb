@@ -193,6 +193,37 @@ describe Packerman::Evaluator do
 
         it_behaves_like :evaluated
       end
+
+      context "amazon-ebs" do
+        let(:template) do
+          <<-EOS.undent
+          Builders type: :"amazon-chroot" do
+            access_key "access_key"
+            ami_name   "ami_name"
+            secret_key "secret_key"
+            source_ami "amazonlinux"
+            ami_description "yours"
+          end
+          EOS
+        end
+
+        let(:hash) do
+          {
+            builders: [
+              {
+                type: "amazon-chroot",
+                access_key: "access_key",
+                ami_name:   "ami_name",
+                secret_key: "secret_key",
+                source_ami: "amazonlinux",
+                ami_description: "yours"
+              }
+            ]
+          }
+        end
+
+        it_behaves_like :evaluated
+      end
     end
   end
 end
