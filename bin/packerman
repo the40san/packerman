@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'packerman'
+
+Packerman::Client.new.convert(ARGV[0])
