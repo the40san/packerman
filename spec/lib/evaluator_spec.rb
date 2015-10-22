@@ -22,6 +22,18 @@ describe Packerman::Evaluator do
           ssh_username  "ec2-user"
         end
 
+        block_device = AmiBlockDeviceMapping.register do
+          delete_on_termination true
+          device_name "devise"
+          encrypted false
+          iops 200_000
+          no_device true
+          snapshot_id "omg"
+          virtual_name "virrrtual"
+          volume_type "type"
+          volume_size 20
+        end
+
         Builders type: :"amazon-ebs" do
           access_key    "access_key"
           ami_name      "whoami2"
@@ -30,6 +42,20 @@ describe Packerman::Evaluator do
           secret_key    "secret_key"
           source_ami    "iam_ubuntu"
           ssh_username  "ubuntu"
+          ami_block_device_mappings [
+            AmiBlockDeviceMapping.register {
+              delete_on_termination true
+              device_name "devise"
+              encrypted false
+              iops 200_000
+              no_device true
+              snapshot_id "omg"
+              virtual_name "virrrtual"
+              volume_type "type"
+              volume_size 20
+            },
+            block_device
+          ]
         end
         EOS
       end
@@ -55,7 +81,31 @@ describe Packerman::Evaluator do
               region: "ap-northeast-1",
               secret_key: "secret_key",
               source_ami: "iam_ubuntu",
-              ssh_username: "ubuntu"
+              ssh_username: "ubuntu",
+              ami_block_device_mappings: [
+                {
+                  delete_on_termination: true,
+                  device_name: "devise",
+                  encrypted: false,
+                  iops: 200_000,
+                  no_device: true,
+                  snapshot_id: "omg",
+                  virtual_name: "virrrtual",
+                  volume_type: "type",
+                  volume_size: 20
+                },
+                {
+                  delete_on_termination: true,
+                  device_name: "devise",
+                  encrypted: false,
+                  iops: 200_000,
+                  no_device: true,
+                  snapshot_id: "omg",
+                  virtual_name: "virrrtual",
+                  volume_type: "type",
+                  volume_size: 20
+                }
+              ]
             }
           ]
         }

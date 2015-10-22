@@ -15,11 +15,15 @@ module Packerman::Dsl::Node
   end
 
   def to_hash
-    keys = [:type] + self.class.require_keys + self.class.optional_keys
+    keys = self.class.hash_key
     @_hash.slice(*keys)
   end
 
   class_methods do
+    def hash_key
+      [:type] + require_keys + optional_keys
+    end
+
     def require_keys
       []
     end
