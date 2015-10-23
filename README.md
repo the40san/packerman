@@ -2,7 +2,8 @@
 Ruby DSL for Packer by HashiCorp.
 
 # Usage
-Packerman is converter ruby DSL to Packer template.
+
+Packerman is converter ruby DSL to Packer template.<br>
 Currently, Packerman is supporting these template structures.
 
 ## Builders
