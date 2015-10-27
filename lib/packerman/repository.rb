@@ -1,16 +1,22 @@
 class Packerman::Repository
-  TEMPLATE_ATTRIBUTES = [:builders, :provisioners]
+  ARRAY_ATTRIBUTES = [:builders, :provisioners]
 
   def initialize
     @_repo = {}
   end
 
-  TEMPLATE_ATTRIBUTES.each do |attr|
+  ARRAY_ATTRIBUTES.each do |attr|
     define_method "add_#{attr}" do |hash|
       @_repo[attr] ||= []
       @_repo[attr] << hash
       hash
     end
+  end
+
+  def add_variables(hash)
+    @_repo[:variables] ||= {}
+    @_repo[:variables].merge!(hash)
+    hash
   end
 
   def to_hash

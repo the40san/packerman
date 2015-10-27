@@ -23,7 +23,7 @@ describe Packerman::Evaluator do
             ssh_username  "ec2-user"
           end
 
-          block_device = AmiBlockDeviceMapping.register do
+          block_device = AmiBlockDeviceMapping do
             delete_on_termination true
             device_name "devise"
             encrypted false
@@ -44,7 +44,7 @@ describe Packerman::Evaluator do
             source_ami    "iam_ubuntu"
             ssh_username  "ubuntu"
             ami_block_device_mappings [
-              AmiBlockDeviceMapping.register {
+              AmiBlockDeviceMapping {
                 delete_on_termination true
                 device_name "devise"
                 encrypted false
@@ -131,7 +131,7 @@ describe Packerman::Evaluator do
             x509_cert_path "/path/to/cert"
             x509_key_path  "/path/to/key"
             ami_block_device_mappings [
-              AmiBlockDeviceMapping.register {
+              AmiBlockDeviceMapping {
                 delete_on_termination true
                 device_name "devise"
                 encrypted false
@@ -320,6 +320,28 @@ describe Packerman::Evaluator do
 
         it_behaves_like :evaluated
       end
+    end
+
+    describe "Variables" do
+      let(:template) do
+        <<-EOS.undent
+        Variables do
+          aws_access_key_id '{{env `AWS_ACCESS_KEY_ID`}}'
+          aws_secret_access_key '{{env `AWS_SECRET_ACCESS_KEY`}}'
+        end
+        EOS
+      end
+
+      let(:hash) do
+        {
+          variables: {
+            aws_access_key_id:     '{{env `AWS_ACCESS_KEY_ID`}}',
+            aws_secret_access_key: '{{env `AWS_SECRET_ACCESS_KEY`}}'
+          }
+        }
+      end
+
+      it_behaves_like :evaluated
     end
   end
 end
