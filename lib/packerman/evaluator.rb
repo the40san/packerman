@@ -16,7 +16,7 @@ class Packerman::Evaluator
   end
 
   def parse(template)
-    parts = %w(Builders Provisioners)
+    parts = %w(Builders Provisioners AmiBlockDeviceMapping)
     parts.inject(template) do |memo, part|
       memo.gsub(part, "#{part}.register")
     end

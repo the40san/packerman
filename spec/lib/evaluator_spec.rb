@@ -23,7 +23,7 @@ describe Packerman::Evaluator do
             ssh_username  "ec2-user"
           end
 
-          block_device = AmiBlockDeviceMapping.register do
+          block_device = AmiBlockDeviceMapping do
             delete_on_termination true
             device_name "devise"
             encrypted false
@@ -44,7 +44,7 @@ describe Packerman::Evaluator do
             source_ami    "iam_ubuntu"
             ssh_username  "ubuntu"
             ami_block_device_mappings [
-              AmiBlockDeviceMapping.register {
+              AmiBlockDeviceMapping {
                 delete_on_termination true
                 device_name "devise"
                 encrypted false
@@ -131,7 +131,7 @@ describe Packerman::Evaluator do
             x509_cert_path "/path/to/cert"
             x509_key_path  "/path/to/key"
             ami_block_device_mappings [
-              AmiBlockDeviceMapping.register {
+              AmiBlockDeviceMapping {
                 delete_on_termination true
                 device_name "devise"
                 encrypted false
