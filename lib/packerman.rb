@@ -18,6 +18,7 @@ require 'packerman/dsl/builders/docker'
 require 'packerman/dsl/provisioners'
 require 'packerman/dsl/provisioners/shell'
 require 'packerman/dsl/provisioners/chef_solo'
+require 'packerman/dsl/variables'
 
 module Packerman
 end

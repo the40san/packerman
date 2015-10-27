@@ -321,5 +321,27 @@ describe Packerman::Evaluator do
         it_behaves_like :evaluated
       end
     end
+
+    describe "Variables" do
+      let(:template) do
+        <<-EOS.undent
+        Variables do
+          aws_access_key_id '{{env `AWS_ACCESS_KEY_ID`}}'
+          aws_secret_access_key '{{env `AWS_SECRET_ACCESS_KEY`}}'
+        end
+        EOS
+      end
+
+      let(:hash) do
+        {
+          variables: {
+            aws_access_key_id:     '{{env `AWS_ACCESS_KEY_ID`}}',
+            aws_secret_access_key: '{{env `AWS_SECRET_ACCESS_KEY`}}'
+          }
+        }
+      end
+
+      it_behaves_like :evaluated
+    end
   end
 end

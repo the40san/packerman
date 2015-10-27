@@ -13,6 +13,12 @@ class Packerman::Repository
     end
   end
 
+  def add_variables(hash)
+    @_repo[:variables] ||= {}
+    @_repo[:variables].merge!(hash)
+    hash
+  end
+
   def to_hash
     @_repo
   end
