@@ -1,15 +1,8 @@
 require "spec_helper"
+require 'tempfile'
 
 describe Packerman::Client do
   describe "#convert" do
-    let(:template) do
-      <<-EOS.undent
-      Builders type: "amazon-ebs" do
-        access_key "hoge"
-      end
-      EOS
-    end
-
     let(:expected) do
       <<-EOS.undent
       {
@@ -23,10 +16,17 @@ describe Packerman::Client do
       EOS
     end
 
-    subject { Packerman::Client.new.convert(template) }
+    subject do
+      Packerman::Client.new.convert(File.join("spec", "support", "template.rb"))
+      File.open("template.json").read
+    end
 
     it "returns json like" do
       expect(subject).to eq expected
+    end
+
+    after do
+      File.delete("template.json")
     end
   end
 end
