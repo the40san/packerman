@@ -1,3 +1,6 @@
+[![Code Climate](https://codeclimate.com/github/the40san/packerman/badges/gpa.svg)](https://codeclimate.com/github/the40san/packerman)
+[![Test Coverage](https://codeclimate.com/github/the40san/packerman/badges/coverage.svg)](https://codeclimate.com/github/the40san/packerman/coverage)
+
 # packerman
 Ruby DSL for Packer by HashiCorp.
 
