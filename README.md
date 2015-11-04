@@ -19,13 +19,10 @@ Currently, Packerman is supporting these template structures.
 * shell
 * chef-solo
 
+### Variables
+* variables are also supported
+
 # DSL
-
-use this command to convert DSL.
-
-```
-$ bundle exec packerman <filename>
-```
 
 Here is DSL sample.
 
@@ -38,6 +35,12 @@ end
 Provisioners type: "shell" do
   inline ['echo Hello Packerman']
 end
+```
+
+then, use this command to convert DSL.
+
+```
+$ bundle exec packerman <filename>
 ```
 
 ```json:sample.json
