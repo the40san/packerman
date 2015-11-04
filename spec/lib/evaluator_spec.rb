@@ -278,6 +278,33 @@ describe Packerman::Evaluator do
 
         it_behaves_like :evaluated
       end
+
+      context "null" do
+        let(:template) do
+          <<-EOS.undent
+          Builders type: "null" do
+            ssh_host     "127.0.0.1"
+            ssh_username "foo"
+            ssh_password "bar"
+          end
+          EOS
+        end
+
+        let(:hash) do
+          {
+            builders: [
+              {
+                type:         "null",
+                ssh_host:     "127.0.0.1",
+                ssh_username: "foo",
+                ssh_password: "bar"
+              }
+            ]
+          }
+        end
+
+        it_behaves_like :evaluated
+      end
     end
 
     describe "Provisioners" do
