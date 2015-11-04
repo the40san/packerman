@@ -1,6 +1,4 @@
 class Packerman::Dsl::Builders::AmazonEbs < Packerman::Dsl::Builders
-  include Packerman::Dsl::Node
-
   def type
     "amazon-ebs"
   end

@@ -1,6 +1,4 @@
 class Packerman::Dsl::Builders::Googlecompute < Packerman::Dsl::Builders
-  include Packerman::Dsl::Node
-
   def type
     "googlecompute"
   end
