@@ -1,4 +1,4 @@
-class Packerman::Dsl::Provisioners::Shell < Packerman::Dsl::Builders
+class Packerman::Dsl::Provisioners::Shell < Packerman::Dsl::Provisioners
   include Packerman::Dsl::Node
 
   class << self

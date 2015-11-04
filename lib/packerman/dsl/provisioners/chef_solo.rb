@@ -1,6 +1,4 @@
-class Packerman::Dsl::Provisioners::ChefSolo < Packerman::Dsl::Builders
-  include Packerman::Dsl::Node
-
+class Packerman::Dsl::Provisioners::ChefSolo < Packerman::Dsl::Provisioners
   def type
     "chef-solo"
   end
