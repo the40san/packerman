@@ -9,12 +9,13 @@ Ruby DSL for Packer by HashiCorp.
 Packerman is converter ruby DSL to Packer template.<br>
 Currently, Packerman is supporting these template structures.
 
-### Builders
+### Builders (contains full communicator support)
 * amazon-ebs
 * amazon-instance
 * amazon-chroot
 * docker
 * googlecompute
+* null
 
 ### Provisioners
 * shell
