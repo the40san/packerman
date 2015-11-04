@@ -1,4 +1,4 @@
-class Packerman::Dsl::Builders::AmazonChroot< Packerman::Dsl::Builders
+class Packerman::Dsl::Builders::AmazonChroot < Packerman::Dsl::Builders
   include Packerman::Dsl::Node
 
   def type
