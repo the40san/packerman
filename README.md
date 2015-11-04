@@ -14,6 +14,7 @@ Currently, Packerman is supporting these template structures.
 * amazon-instance
 * amazon-chroot
 * docker
+* googlecompute
 
 ### Provisioners
 * shell
