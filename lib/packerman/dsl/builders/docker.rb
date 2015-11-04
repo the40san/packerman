@@ -1,6 +1,4 @@
 class Packerman::Dsl::Builders::Docker < Packerman::Dsl::Builders
-  include Packerman::Dsl::Node
-
   class << self
     def require_keys
       [
