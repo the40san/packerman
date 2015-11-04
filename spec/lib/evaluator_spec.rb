@@ -249,6 +249,35 @@ describe Packerman::Evaluator do
 
         it_behaves_like :evaluated
       end
+
+      context "googlecompute" do
+        let(:template) do
+          <<-EOS.undent
+          Builders type: "googlecompute" do
+            account_file "account.json"
+            project_id   "my-project"
+            source_image "debian-7-wheezy-v20150127"
+            zone         "us-central1-a"
+          end
+          EOS
+        end
+
+        let(:hash) do
+          {
+            builders: [
+              {
+                type:         "googlecompute",
+                account_file: "account.json",
+                project_id:   "my-project",
+                source_image: "debian-7-wheezy-v20150127",
+                zone:         "us-central1-a"
+              }
+            ]
+          }
+        end
+
+        it_behaves_like :evaluated
+      end
     end
 
     describe "Provisioners" do
