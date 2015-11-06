@@ -16,6 +16,7 @@ Currently, Packerman is supporting these template structures.
 * docker
 * googlecompute
 * null
+* virtualbox-iso
 
 ### Provisioners
 * shell
